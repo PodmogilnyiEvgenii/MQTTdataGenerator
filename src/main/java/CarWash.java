@@ -1,7 +1,7 @@
 import java.util.LinkedHashMap;
 
 public class CarWash {
-    private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(mainApp.class);
+    private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(MainApp.class);
 
     public static final String[] ID = {"0000.000.00000", "0001.001.00001", "0001.001.00002", "0002.001.00001", "0002.002.00001", "0002.002.00002", "0002.003.00001", "0002.003.00002", "0003.001.00001", "0003.002.00001"};
     public static final String[] WORK_STATUS = {"test", "work", "work", "work", "work", "work", "work", "work", "work", "work"};

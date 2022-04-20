@@ -1,13 +1,13 @@
 import java.io.*;
 import java.util.Map;
 
-public class MQTToptionsFile {
-    private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(mainApp.class);
+public class MQTTOptionsFile {
+    private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(MainApp.class);
 
     public static void create() {
         try {
-            FileWriter mqttOptionsFileWriter = new FileWriter(MQTToptions.filePath);
-            for (Map.Entry<String, String> entry : MQTToptions.optionsMap.entrySet()) {
+            FileWriter mqttOptionsFileWriter = new FileWriter(MQTTOptions.filePath);
+            for (Map.Entry<String, String> entry : MQTTOptions.optionsMap.entrySet()) {
                 mqttOptionsFileWriter.write(entry.getKey() + "=" + entry.getValue() + "\n");
             }
             mqttOptionsFileWriter.flush();
@@ -19,7 +19,7 @@ public class MQTToptionsFile {
 
     public static void read() {
         try {
-            File mqttOptionsFile = new File(MQTToptions.filePath);
+            File mqttOptionsFile = new File(MQTTOptions.filePath);
             FileReader fr = new FileReader(mqttOptionsFile);
             BufferedReader mqttOptionsFileReader = new BufferedReader(fr);
 
@@ -27,7 +27,7 @@ public class MQTToptionsFile {
             do {
                 buffer = mqttOptionsFileReader.readLine();
                 if (buffer != null) {
-                    MQTToptions.optionsMap.put(buffer.split("=")[0], buffer.split("=")[1]);
+                    MQTTOptions.optionsMap.put(buffer.split("=")[0], buffer.split("=")[1]);
                 }
             } while (buffer != null);
             logger.debug("MQTT options file readed.");
@@ -36,5 +36,9 @@ public class MQTToptionsFile {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static boolean optionsFileFound() {
+        return new File(MQTTOptions.filePath).exists();
     }
 }

@@ -1,8 +1,7 @@
-import java.io.File;
 import java.util.HashMap;
 
-public class MQTToptions {
-    private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(mainApp.class);
+public class MQTTOptions {
+    private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(MainApp.class);
     public static final String filePath = "src\\main\\resources\\MQTT.options.cfg";
     public static HashMap<String, String> optionsMap = new HashMap<>();
     static {
@@ -15,15 +14,13 @@ public class MQTToptions {
         optionsMap.put("MQTT_TOPIC2", "user_e26b81e5/test");
     }
 
-    public static void GetOptions() {
-        boolean mqttOptionsFound = new File(MQTToptions.filePath).exists();
-
-        if (mqttOptionsFound) {
+    public static void getOptions() {
+        if (MQTTOptionsFile.optionsFileFound()) {
             logger.debug("MQTT options file found");
         } else {
             logger.debug("MQTT options file not found. Creating new.");
-            MQTToptionsFile.create();
+            MQTTOptionsFile.create();
         }
-        MQTToptionsFile.read();
+        MQTTOptionsFile.read();
     }
 }
