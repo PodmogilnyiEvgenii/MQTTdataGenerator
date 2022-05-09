@@ -1,10 +1,12 @@
+package com.datagenerator.mqtt;
+
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
 public class MQTTCallBacks {
-    private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(MainApp.class);
+    private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(MQTTCallBacks.class);
 
     public static class CallBacks implements MqttCallback {
         @Override
